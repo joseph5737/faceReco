@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>손으로 깨는 블록 게임</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="copy">
+          <p class="eyebrow">Google MediaPipe Hands</p>
+          <h1>손이 닿으면 블록이 깨지는 게임</h1>
+          <p class="lede">
+            카메라에 손을 비추고, 떨어지는 블록을 손끝으로 부숴 보세요. 블록을 많이
+            맞힐수록 점수가 올라갑니다.
+          </p>
+
+          <div class="hud">
+            <div class="card">
+              <span class="label">점수</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="card">
+              <span class="label">콤보</span>
+              <strong id="combo">0</strong>
+            </div>
+            <div class="card">
+              <span class="label">상태</span>
+              <strong id="status">카메라 준비 중</strong>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="startBtn">카메라 시작</button>
+            <button id="restartBtn" class="secondary">게임 리셋</button>
+          </div>
+
+          <ul class="tips">
+            <li>손바닥이 화면 안에 들어오게 해 주세요.</li>
+            <li>검지 끝으로 블록을 터치하면 점수가 올라갑니다.</li>
+            <li>웹캠 권한을 허용해야 동작합니다.</li>
+          </ul>
+        </div>
+
+        <div class="stage">
+          <div class="frame">
+            <video id="video" playsinline muted></video>
+            <canvas id="game"></canvas>
+            <div class="overlay">
+              <div class="signal" id="signal">손 인식 대기 중</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
